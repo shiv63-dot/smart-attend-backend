@@ -13,11 +13,16 @@ const EMAIL_USER = "avcharshiv9@gmail.com"
 const EMAIL_PASS = "xdhk wgfo upkl ppgr"
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: EMAIL_USER,
     pass: EMAIL_PASS
-  }
+  },
+  connectionTimeout: 20000,
+  greetingTimeout: 20000,
+  socketTimeout: 20000
 })
 
 if (!fs.existsSync(adminFile)) fs.writeFileSync(adminFile, "[]")
